@@ -1,4 +1,4 @@
-app.controller('loginController', function($scope, $http, $routeParams) {
+app.controller('loginController', function($scope, $http) {
 
   $scope.username = "lord_54";
   $scope.password = "lord_54";
