@@ -9,7 +9,7 @@ app.controller('projectController', function($scope, $http) {
 
   //go to project interviews
   $scope.go = function (id) {
-    location.href = "../interviews/" + id;
+    location.href = "../interviews/#?proj_id=" + id;
   }
 
   //add new project

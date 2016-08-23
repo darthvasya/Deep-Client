@@ -1,4 +1,9 @@
-app.controller("interviewController", function ($scope, $http) {
+app.controller("interviewController", function ($scope, $http, $location) {
+    var searchObject = $location.search();
+    $scope.id = searchObject.proj_id;
+    console.log($scope.id);
+
+    //get asked peoples
 
     $scope.interviews = [
         {
@@ -22,7 +27,18 @@ app.controller("interviewController", function ($scope, $http) {
     ];
 
     $scope.inter_info = function (id) {
-        console.log ( id );
+        location.href = "../questions/#id=" + id;
+    }
+
+    $scope.add_new = function () {
+      var new_people = {};
+      new_people.name = $scope.name;
+      new_people.age = $scope.age;
+      new_people.profession = $scope.profession;
+      console.log(new_people);
+      //post
+      //get result
+      //insert in model
     }
 
 });

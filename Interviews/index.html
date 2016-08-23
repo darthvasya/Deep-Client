@@ -10,7 +10,9 @@
 	<body ng-controller="interviewController">
 		<header>
 			<p class="header_name">Опрошенные</p>
-			<img src="images/plus.png" class="img-responsive" id="image">
+			<button class="but" data-toggle="modal" data-target=".bs-example-modal-sm">
+				<img src="images/plus.png" class="img-responsive" id="image">
+			</button>
 		</header>
 		<div class="project" ng-repeat="interview in interviews" ng-click="inter_info(interview.id)">
 			<p class="project-name" ng-bind="interview.name">Vasya</p>
@@ -18,6 +20,29 @@
 			<p class="project-name prof" ng-bind="interview.profession">Программист</p>
 		</div>
 
+
+				<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+				  <div class="modal-dialog modal-sm">
+				    <div class="modal-content">
+						<div class="modal-header">
+				         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				         <h4 class="modal-title">Новый опрашиваемый</h4>
+				       </div>
+				       <div class="modal-body">
+				          <p>Имя</p>
+						 	 		<input type="text" class="form-control" ng-model="name">
+									<p>Возраст</p>
+						 	 		<input type="text" class="form-control" ng-model="age">
+									<p>Описание</p>
+						 	 		<input type="text" class="form-control" ng-model="profession">
+				       </div>
+				       <div class="modal-footer">
+				         <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+				         <button type="button" class="btn btn-info" ng-click="add_new()" data-dismiss="modal">Сохранить изменения</button>
+				       </div>
+				    </div>
+				  </div>
+				</div>
 
 
 		<script src="../node_modules/jquery/dist/jquery.min.js"></script>

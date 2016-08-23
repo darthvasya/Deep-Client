@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="css/quest.css">
+		<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+
+
+	</head>
+	<body ng-controller="questionsController">
+		<header>
+			<p class="header_name">Петя, 19 лет</p>
+			<img src="images/plus.png" class="img-responsive" id="image">
+		</header>
+
+		<h3>Вопрос:</h3>
+		<div class="input-group">
+			<div class="checkbox">
+				<label>
+					<input type="checkbox"> Проверить меня
+				</label>
+			</div>
+			<div class="checkbox">
+				<label>
+					<input type="checkbox"> Проверить меня
+				</label>
+			</div>
+		</div>
+
+		<form action="">
+			<div class="input-group">
+				<span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+				<input type="text" class="form-control" placeholder="Имя">
+			</div>
+		</form>
+
+
+		<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+		<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+
+		<script src="../node_modules/angular/angular.min.js" charset="utf-8"></script>
+		<script src="../node_modules/angular-route/angular-route.js" charset="utf-8"></script>
+
+		<script src="../app.js" charset="utf-8"></script>
+		<script src="Controllers/questionsController.js" charset="utf-8"></script>
+
+	</body>
+</html>
