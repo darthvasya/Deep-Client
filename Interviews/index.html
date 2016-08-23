@@ -12,10 +12,10 @@
 			<p class="header_name">Опрошенные</p>
 			<img src="images/plus.png" class="img-responsive" id="image">
 		</header>
-		<div class="project" >
-			<p class="project-name">Vasya</p>
-			<p class="project-name count">19</p>
-			<p class="project-name prof">Программист</p>
+		<div class="project" ng-repeat="interview in interviews" ng-click="inter_info(interview.id)">
+			<p class="project-name" ng-bind="interview.name">Vasya</p>
+			<p class="project-name count" ng-bind="interview.age">19</p>
+			<p class="project-name prof" ng-bind="interview.profession">Программист</p>
 		</div>
 
 

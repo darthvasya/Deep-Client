@@ -1,22 +1,18 @@
 app.controller('projectController', function($scope, $http) {
 
-  $scope.projects = [
-    {
-      "id": "1",
-      "name": "da",
-      "count": "132"
-    },
-    {
-      "id": "2",
-      "name": "dasdfa",
-      "count": "12"
-    }
-  ];
+  $scope.projects = [];
 
+  //geting projects
+  $http.get('http://maximka777-001-site1.gtempurl.com/projectmanagementsystem/ProjectService.svc/projects/').success(function(data) {
+    $scope.projects = data;
+  });
+
+  //go to project interviews
   $scope.go = function (id) {
     location.href = "../interviews/" + id;
   }
 
+  //add new project
   $scope.add = function () {
     var project = {};
     project.name = $scope.project_name;
@@ -26,9 +22,6 @@ app.controller('projectController', function($scope, $http) {
         console.log(data);
       });
     }
-
   }
-
-
 
 });
