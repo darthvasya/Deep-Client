@@ -11,7 +11,9 @@
 	<body ng-controller="questionsController">
 		<header>
 			<p class="header_name"><span ng-bind="people.name"></span>, <span ng-bind="people.age"></span> лет</p>
-			<img src="images/plus.png" class="img-responsive" id="image">
+			<button class="but"  data-toggle="modal" data-target="#new_question">
+				<img src="images/plus.png" class="img-responsive" id="image">
+			</button>
 		</header>
 
 		<div id="question" ng-repeat="question in questions">
@@ -24,7 +26,7 @@
 				</div>
 			</div>
 			<div class="input-group">
-				<button type="button" style="width: 100%;" name="button" class="btn add-btn" ng-click="change_current_id(question.id)" data-toggle="modal" data-target=".bs-example-modal-sm">Add</button>
+				<button type="button" style="width: 100%;" name="button" class="btn add-btn" ng-click="change_current_id(question.id)" data-toggle="modal" data-target="#variant">Add</button>
 				<p style="color: #A7A6A6;">bit</p>
 				<p style="color: #A7A6A6;">bit</p>
 			</div>
@@ -37,7 +39,7 @@
 		<!-- Small modal -->
 
 
-		<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+		<div id="variant" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
 		  <div class="modal-dialog modal-sm">
 		    <div class="modal-content">
 				<div class="modal-header">
@@ -45,7 +47,7 @@
 		         <h4 class="modal-title">Новый вариант</h4>
 		       </div>
 		       <div class="modal-body">
-		          <p>Суть вопроса:</p>
+		          <p>Суть варианта:</p>
 				 	 		<input type="text" class="form-control" ng-model="new_variant">
 		       </div>
 		       <div class="modal-footer">
@@ -55,6 +57,27 @@
 		    </div>
 		  </div>
 		</div>
+
+
+		<div id="new_question" class="modal fade bs-example-modal-sm" tabindex="-2" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-sm">
+				<div class="modal-content">
+				<div class="modal-header">
+						 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						 <h4 class="modal-title">Новый вопрос</h4>
+					 </div>
+					 <div class="modal-body">
+							<p>Суть вопроса:</p>
+							<input type="text" class="form-control" ng-model="new_quest">
+					 </div>
+					 <div class="modal-footer">
+						 <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+						 <button type="button" class="btn btn-info" data-dismiss="modal" ng-click="add_question()">Добавить</button>
+					 </div>
+				</div>
+			</div>
+		</div>
+
 
 		<script src="../node_modules/jquery/dist/jquery.min.js"></script>
 		<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>

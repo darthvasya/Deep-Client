@@ -11,7 +11,6 @@ app.controller("questionsController", function ($scope, $http, $location) {
 
     $scope.id_current_question = 0;
 
-
     $scope.questions = [];
     updateQuestions();
     function updateQuestions() {
@@ -40,6 +39,20 @@ app.controller("questionsController", function ($scope, $http, $location) {
         }
       });
       //$scope.questions.variants.push(variant);
+    }
+
+
+    //questionsы adding
+
+    $scope.add_question = function () {
+      var question = {};
+      question.project_id = $scope.p_id;
+      question.text = $scope.new_quest;
+      console.log(question);
+      $http.post('http://localhost:57655/QuestionManagementSystem/QuestionService.svc/projects/' + $scope.p_id + '/questions/add/', question).success(function(data) {
+        console.log(data);
+        updateQuestions();
+      });
     }
 
 });
