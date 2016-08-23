@@ -13,8 +13,8 @@ app.controller('projectController', function($scope, $http) {
     }
   ];
 
-  $scope.go = function (name) {
-    location.href = "";
+  $scope.go = function (id) {
+    location.href = "../interviews/" + id;
   }
 
   $scope.add = function () {

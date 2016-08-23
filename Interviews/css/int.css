@@ -29,6 +29,12 @@ img{
 	top: 10%;
 	font-size: 50px;
 }
+.prof{
+	position: absolute;
+	left: 12%;
+	top: 70%;
+	font-size: 18px;
+}
 .count{
 	position: absolute;
 	left: 65%;
