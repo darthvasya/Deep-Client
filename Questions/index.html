@@ -14,27 +14,47 @@
 			<img src="images/plus.png" class="img-responsive" id="image">
 		</header>
 
-		<h3>Вопрос:</h3>
-		<div class="input-group">
-			<div class="checkbox">
-				<label>
-					<input type="checkbox"> Проверить меня
-				</label>
+		<div id="question" ng-repeat="question in questions">
+			<h3 style="margin-left: 5px;" ng-bind="question.text"></h3>
+			<div class="input-group">
+				<div class="checkbox" ng-repeat="variant in question.variantList">
+					<label>
+						<input type="checkbox"> <span ng-bind="variant.text"></span>
+					</label>
+				</div>
 			</div>
-			<div class="checkbox">
-				<label>
-					<input type="checkbox"> Проверить меня
-				</label>
+			<div class="input-group">
+				<input type="text" class="form-control inp-quest" placeholder="Новый вариант">
+				<button type="button" name="button" class="btn add-btn" ng-click="change_current_id(question.id)" data-toggle="modal" data-target=".bs-example-modal-sm">Add</button>
+				<p style="color: #A7A6A6;">sda</p>
 			</div>
 		</div>
 
-		<form action="">
-			<div class="input-group">
-				<span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-				<input type="text" class="form-control" placeholder="Имя">
-			</div>
-		</form>
 
+
+
+
+		<!-- Small modal -->
+
+
+		<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+		  <div class="modal-dialog modal-sm">
+		    <div class="modal-content">
+				<div class="modal-header">
+		         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		         <h4 class="modal-title">Новый вариант</h4>
+		       </div>
+		       <div class="modal-body">
+		          <p>Суть вопроса:</p>
+				 	 		<input type="text" class="form-control" ng-model="new_variant">
+		       </div>
+		       <div class="modal-footer">
+		         <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+		         <button type="button" class="btn btn-info" data-dismiss="modal" ng-click="add_new_variant()">Добавить</button>
+		       </div>
+		    </div>
+		  </div>
+		</div>
 
 		<script src="../node_modules/jquery/dist/jquery.min.js"></script>
 		<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>

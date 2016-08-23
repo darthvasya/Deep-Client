@@ -22,7 +22,7 @@ app.controller("interviewController", function ($scope, $http, $location) {
 
 
     $scope.inter_info = function (id) {
-        location.href = "../questions/#?id=" + id;
+        location.href = "../questions/#?id=" + id + "&p_id=" + $scope.id;
     }
 
     $scope.add_new = function () {
