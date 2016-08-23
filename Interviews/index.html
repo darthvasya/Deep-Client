@@ -9,7 +9,7 @@
 	</head>
 	<body ng-controller="interviewController">
 		<header>
-			<p class="header_name">Опрошенные</p>
+			<p class="header_name" ng-bind="project.name">Опрошенные</p>
 			<button class="but" data-toggle="modal" data-target=".bs-example-modal-sm">
 				<img src="images/plus.png" class="img-responsive" id="image">
 			</button>

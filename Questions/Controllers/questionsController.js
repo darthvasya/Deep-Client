@@ -1,8 +1,11 @@
 app.controller("questionsController", function ($scope, $http, $location) {
-    console.log(12);
     var searchObject = $location.search();
     $scope.id = searchObject.id;
 
     $scope.people = {};
-    
+
+    $http.get('http://localhost:57655/projectmanagementsystem/ProjectService.svc/surveys/' + $scope.id).success(function(data) {
+      $scope.people = data;
+    });
+
 });

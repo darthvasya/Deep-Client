@@ -4,30 +4,25 @@ app.controller("interviewController", function ($scope, $http, $location) {
     console.log($scope.id);
 
     //get asked peoples
+    $scope.project = [];
+    $http.get('http://maximka777-001-site1.gtempurl.com/projectmanagementsystem/ProjectService.svc/projects/' + $scope.id).success(function(data) {
+      $scope.project = data;
+      console.log($scope.project);
+    });
 
-    $scope.interviews = [
-        {
-            "id": 1,
-            "name": "Vasya",
-            "age": 12,
-            "profession": "Programmer"
-        },
-        {
-            "id": 2,
-            "name": "Vasya2",
-            "age": 12,
-            "profession": "Programmer"
-        },
-        {
-            "id": 3,
-            "name": "Vasya3",
-            "age": 123,
-            "profession": "Programmer"
-        }
-    ];
+    $scope.interviews = [];
+    updateSurveys();
+
+    function updateSurveys() {
+      $http.get('http://localhost:57655/projectmanagementsystem/ProjectService.svc/projects/'+ $scope.id + '/surveys/').success(function(data) {
+        $scope.interviews = data;
+        console.log($scope.interviews);
+      });
+    }
+
 
     $scope.inter_info = function (id) {
-        location.href = "../questions/#id=" + id;
+        location.href = "../questions/#?id=" + id;
     }
 
     $scope.add_new = function () {
@@ -35,7 +30,12 @@ app.controller("interviewController", function ($scope, $http, $location) {
       new_people.name = $scope.name;
       new_people.age = $scope.age;
       new_people.profession = $scope.profession;
+      new_people.description = "description";
+      new_people.project_id = $scope.id;
       console.log(new_people);
+      $http.post('http://localhost:57655/projectmanagementsystem/ProjectService.svc/surveys/add/', new_people).success(function(data) {
+        updateSurveys();
+      });
       //post
       //get result
       //insert in model
