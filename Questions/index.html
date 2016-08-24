@@ -9,14 +9,14 @@
 
 	</head>
 	<body ng-controller="questionsController">
-		<header>
+		<header style="position: fixed;">
 			<p class="header_name"><span ng-bind="people.name"></span>, <span ng-bind="people.age"></span> лет</p>
 			<button class="but"  data-toggle="modal" data-target="#new_question">
 				<img src="images/plus.png" class="img-responsive" id="image">
 			</button>
 		</header>
 
-		<div id="question" ng-repeat="question in questions">
+		<div id="question" ng-repeat="question in questions" ng-hide="showAnsw">
 			<h3 style="margin-left: 5px;" ng-bind="question.text"></h3>
 			<div class="input-group">
 				<div class="checkbox" ng-repeat="variant in question.variantList">
@@ -32,7 +32,12 @@
 			</div>
 		</div>
 
-		<button type="button" class="btn" name="button" ng-click="save_answers()">Save</button>
+		<div ng-show="showAnsw">
+			<h1>Опрос завершен</h1>
+
+		</div>
+
+		<button ng-hide="showAnsw" type="button" class="btn" name="button" ng-click="save_answers()">Save</button>
 
 		<!-- Small modal -->
 

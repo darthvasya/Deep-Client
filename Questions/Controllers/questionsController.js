@@ -4,10 +4,19 @@ app.controller("questionsController", function ($scope, $http, $location) {
     $scope.p_id = searchObject.p_id;
     console.log(searchObject);
     $scope.people = {};
-
+    $scope.allAnswers = {};
+    $scope.showAnsw = false;
     $http.get('http://localhost:57655/projectmanagementsystem/ProjectService.svc/surveys/' + $scope.id).success(function(data) {
       $scope.people = data;
+      $scope.showAnsw = data.complete_ask;
+      if($scope.showAnsw == true) {
+        console.log(1);
+        $http.get('http://localhost:57655/QuestionManagementSystem/QuestionService.svc/projects/' + $scope.p_id + '/answers/').success(function (data) {
+          $scope.allAnswers = data;
+        });
+      }
     });
+
 
     $scope.id_current_question = 0;
 
