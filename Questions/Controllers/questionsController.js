@@ -33,7 +33,7 @@ app.controller("questionsController", function ($scope, $http, $location) {
       console.log($scope.p_id);
       $http.post('http://localhost:57655/QuestionManagementSystem/QuestionService.svc/projects/' + $scope.p_id + '/questions/' + $scope.id_current_question + '/variants/add', variant).success(function (data) {
         if(data == true) {
-          updateQuestions();
+          $scope.questions[$scope.id_current_question - 1].variantList.push(variant);
         } else {
           alert("Some mistakes...");
         }
@@ -51,8 +51,40 @@ app.controller("questionsController", function ($scope, $http, $location) {
       console.log(question);
       $http.post('http://localhost:57655/QuestionManagementSystem/QuestionService.svc/projects/' + $scope.p_id + '/questions/add/', question).success(function(data) {
         console.log(data);
-        updateQuestions();
+        $scope.questions.push(question);
       });
+    }
+
+
+
+    $scope.checkboxModel = {
+      value1 : true
+    };
+    var answers = [];
+    answers.push({"survey_id": 0})
+    $scope.toggleselection= function (q_id, v_id) {
+      var answer = {};
+      answer.survey_id = parseInt($scope.id, 10);
+      answer.variant_id = v_id;
+      answer.quest_id = q_id;
+      answer.project_id = $scope.p_id;
+      var buf = false;
+      for (var i = 0; i < answers.length; i++) {
+        if (answers[i].quest_id == q_id && answers[i].variant_id == v_id) {
+          answers.splice(i, 1);
+          buf = true;
+        }
+      }
+      if(buf == false)
+        answers.push(answer);
+      console.log(answers);
+    }
+    $scope.save_answers = function () {
+      console.log(answers);
+      answers.splice(0, 1);
+      $http.post('http://localhost:57655/QuestionManagementSystem/QuestionService.svc/projects/' + $scope.p_id + '/surveys/' + $scope.id, answers).success(function (data) {
+        console.log(data);
+      })
     }
 
 });

@@ -21,7 +21,7 @@
 			<div class="input-group">
 				<div class="checkbox" ng-repeat="variant in question.variantList">
 					<label>
-						<input type="checkbox"> <span ng-bind="variant.text"></span>
+						<input type="checkbox" ng-click="toggleselection(question.id, variant.id)" value="{{variant.text}}"> <span ng-bind="variant.text"></span>
 					</label>
 				</div>
 			</div>
@@ -32,9 +32,7 @@
 			</div>
 		</div>
 
-
-
-
+		<button type="button" class="btn" name="button" ng-click="save_answers()">Save</button>
 
 		<!-- Small modal -->
 
